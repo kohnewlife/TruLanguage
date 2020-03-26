@@ -18,53 +18,53 @@
 @end
 
 @interface TruNot : TruExpr
-@property TruExpr expression;
+@property TruExpr* expression;
 @end
 
 @interface TruAnd : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruOr : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruNand : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruNor : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruXor : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruXnor : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruImply : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruEqual : TruExpr
-@property TruExpr lhs;
-@property TruExpr rhs;
+@property TruExpr* lhs;
+@property TruExpr* rhs;
 @end
 
 @interface TruMaj : TruExpr
-@property TruExpr first;
-@property TruExpr second;
-@property TruExpr third;
+@property TruExpr* first;
+@property TruExpr* second;
+@property TruExpr* third;
 @end
 
 @interface TruId : TruExpr
@@ -72,8 +72,8 @@
 @end
 
 @interface TruCall : TruExpr
-@property NSString
-@property NSArray name;
+@property NSString* function;
+@property NSArray* expressions;
 @end
 
 
