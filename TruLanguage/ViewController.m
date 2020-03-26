@@ -7,12 +7,17 @@
 //
 
 #import "ViewController.h"
+#import "TruExpr.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+- (BOOL)truInterpret:(TruExpr)expression withDefinitions:(NSArray)defs {
+    // TODO switch or if
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

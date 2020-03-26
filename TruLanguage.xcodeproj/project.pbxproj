@@ -44,8 +44,7 @@
 		DE0DD842242C44A9009DD877 /* TruLanguageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TruLanguageTests.m; sourceTree = "<group>"; };
 		DE0DD844242C44A9009DD877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE0DD85B242C46EE009DD877 /* TruExpr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruExpr.h; sourceTree = "<group>"; };
-		DE0DD861242C4B5C009DD877 /* TruValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruValue.h; sourceTree = "<group>"; };
-		DE0DD862242C4B8A009DD877 /* TruNot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruNot.h; sourceTree = "<group>"; };
+		DE0DD863242C67FE009DD877 /* TruDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruDefinition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				DE0DD85B242C46EE009DD877 /* TruExpr.h */,
-				DE0DD861242C4B5C009DD877 /* TruValue.h */,
-				DE0DD862242C4B8A009DD877 /* TruNot.h */,
+				DE0DD863242C67FE009DD877 /* TruDefinition.h */,
 			);
 			path = TruExpr;
 			sourceTree = "<group>";
