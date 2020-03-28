@@ -10,7 +10,7 @@
 #ifndef TruExpr_h
 #define TruExpr_h
 
-@interface TruExpr
+@interface TruExpr : NSObject
 @end
 
 @interface TruValue : TruExpr
@@ -21,20 +21,11 @@
 @property TruExpr* expression;
 @end
 
-@interface TruAnd : TruExpr
-@property TruExpr* lhs;
-@property TruExpr* rhs;
-@end
+// TruAnd in TruAnd.h
 
-@interface TruOr : TruExpr
-@property TruExpr* lhs;
-@property TruExpr* rhs;
-@end
+// TruOr in TruAnd.h
 
-@interface TruNand : TruExpr
-@property TruExpr* lhs;
-@property TruExpr* rhs;
-@end
+// TruNand in TruAnd.h
 
 @interface TruNor : TruExpr
 @property TruExpr* lhs;
@@ -75,6 +66,5 @@
 @property NSString* function;
 @property NSArray* expressions;
 @end
-
 
 #endif /* TruExpr_h */
