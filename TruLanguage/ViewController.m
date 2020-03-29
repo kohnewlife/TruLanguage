@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TruExpr.h"
+#import "TruValue.h"
 #import "TruNot.h"
 #import "TruAnd.h"
 #import "TruOr.h"
@@ -179,14 +180,27 @@ TruExpr* truSubstitute(TruExpr* expr, NSString* symbol, TruExpr* newExpr)
                   andRhs:[(TruMaj*) expression third]]]
          withDefinitions:defs];
     } else if ([expression isKindOfClass:[TruId class]]) {
+        printf("unbound name");
         return nil;
         // TODO throw an error
         //    [(tru-id id) (error 'tru-interpret "unbound name")]
     } else if ([expression isKindOfClass:[TruCall class]]) {
-        TruDefinition *def = truLookup([(TruCall*) expression function], defs);
-        return NO;
-        // TODO throw an error
-        //    [(tru-id id) (error 'tru-interpret "unbound name")]
+        TruDefinition *def  = truLookup([(TruCall*) expression function], defs);
+        TruExpr* body = [(TruFunction*)def body];
+        NSArray *arguments  = [(TruCall*)expression arguments];
+        NSArray *parameters = [(TruFunction*)def parameters];
+        if ([arguments count] != [parameters count]) {
+            printf("wrong number of arguments");
+            return nil;
+        }
+        for (int i; [arguments count]; i++) {
+            TruExpr *arg = [arguments objectAtIndex:i];
+            NSString *param = [parameters objectAtIndex:i];
+            TruExpr *argExpr = [[TruValue alloc]
+                                init:[self truInterpret:arg withDefinitions:defs]];
+            body = truSubstitute(argExpr, param, body);
+        }
+        return [self truInterpret:body withDefinitions:defs];
     } else {
         return NO;
     }

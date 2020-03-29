@@ -13,10 +13,6 @@
 @interface TruExpr : NSObject
 @end
 
-@interface TruValue : TruExpr
-@property BOOL value;
-@end
-
 @interface TruId : TruExpr
 @property id name;
 @end

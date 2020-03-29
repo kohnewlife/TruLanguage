@@ -15,7 +15,7 @@
 
 @interface TruFunction
 @property NSString* name;
-@property NSArray* arguments;
+@property NSArray* parameters;
 @property TruExpr* body;
 @end
 
