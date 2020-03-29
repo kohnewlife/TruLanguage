@@ -1,21 +1,21 @@
 //
-//  TruNand.h
+//  TruImply.h
 //  TruLanguage
 //
 //  Created by Huy Vo on 3/28/20.
 //  Copyright © 2020 Huy Vo. All rights reserved.
 //
 
-#ifndef TruNand_h
-#define TruNand_h
+#ifndef TruImply_h
+#define TruImply_h
 
-@interface TruNand : TruExpr
+@interface TruImply : TruExpr
 @property TruExpr* lhs;
 @property TruExpr* rhs;
 - (id) initWithLhs:(TruExpr*) lhs andRhs:(TruExpr*) rhs;
 @end
 
-@implementation TruNand
+@implementation TruImply
 - (id)initWithLhs:(TruExpr*)lhs andRhs:(TruExpr*)rhs
 {
     self = [super init];
@@ -27,4 +27,4 @@
 }
 @end
 
-#endif /* TruNand_h */
+#endif /* TruImply_h */

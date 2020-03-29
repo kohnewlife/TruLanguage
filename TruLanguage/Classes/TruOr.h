@@ -16,7 +16,7 @@
 @end
 
 @implementation TruOr
-- (id)initWithLhs:(id)lhs andRhs:(id)rhs
+- (id)initWithLhs:(TruExpr*)lhs andRhs:(TruExpr*)rhs
 {
     self = [super init];
     if (self) {
