@@ -11,7 +11,7 @@
 
 @interface TruValue : TruExpr
 @property BOOL value;
-- (id)init:(BOOL)value
+- (id)init:(BOOL)value;
 @end
 
 @implementation TruValue

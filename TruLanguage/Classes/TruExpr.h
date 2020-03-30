@@ -13,8 +13,8 @@
 @interface TruExpr : NSObject
 @end
 
-@interface TruId : TruExpr
-@property id name;
+@implementation TruExpr
+
 @end
 
 #endif /* TruExpr_h */

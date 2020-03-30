@@ -15,6 +15,8 @@
 		DE0DD836242C44A9009DD877 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0DD834242C44A9009DD877 /* LaunchScreen.storyboard */; };
 		DE0DD839242C44A9009DD877 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0DD838242C44A9009DD877 /* main.m */; };
 		DE0DD843242C44A9009DD877 /* TruLanguageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0DD842242C44A9009DD877 /* TruLanguageTests.m */; };
+		DE758B1024316ED200FDE488 /* ViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = DE0DD82C242C44A6009DD877 /* ViewController.h */; };
+		DEDBF66424316BAB00D6C2BC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0DD82D242C44A6009DD877 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,20 @@
 		DE0DD844242C44A9009DD877 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE0DD85B242C46EE009DD877 /* TruExpr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruExpr.h; sourceTree = "<group>"; };
 		DE0DD863242C67FE009DD877 /* TruDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruDefinition.h; sourceTree = "<group>"; };
+		DE0DD864242F0340009DD877 /* TruAnd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruAnd.h; sourceTree = "<group>"; };
+		DE0DD865242F0398009DD877 /* TruOr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruOr.h; sourceTree = "<group>"; };
+		DE0DD866242F041B009DD877 /* TruNand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruNand.h; sourceTree = "<group>"; };
+		DE0DD867242FCAC6009DD877 /* TruNot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruNot.h; sourceTree = "<group>"; };
+		DE758B11243185DB00FDE488 /* TruFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruFunction.h; sourceTree = "<group>"; };
+		DE7FBA5B243045B20009E095 /* TruNor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruNor.h; sourceTree = "<group>"; };
+		DE7FBA5C243045D50009E095 /* TruXor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruXor.h; sourceTree = "<group>"; };
+		DE7FBA5D243045FA0009E095 /* TruXnor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruXnor.h; sourceTree = "<group>"; };
+		DE7FBA5E243046280009E095 /* TruImply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruImply.h; sourceTree = "<group>"; };
+		DE7FBA602430466F0009E095 /* TruEqual.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruEqual.h; sourceTree = "<group>"; };
+		DE7FBA612430467D0009E095 /* TruMaj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruMaj.h; sourceTree = "<group>"; };
+		DE7FBA62243048B60009E095 /* TruCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruCall.h; sourceTree = "<group>"; };
+		DEDBF650243124B800D6C2BC /* TruValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruValue.h; sourceTree = "<group>"; };
+		DEDBF66524316BFE00D6C2BC /* TruId.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruId.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +102,7 @@
 		DE0DD825242C44A6009DD877 /* TruLanguage */ = {
 			isa = PBXGroup;
 			children = (
-				DE0DD85E242C4763009DD877 /* TruExpr */,
+				DE0DD85E242C4763009DD877 /* Classes */,
 				DE0DD826242C44A6009DD877 /* AppDelegate.h */,
 				DE0DD827242C44A6009DD877 /* AppDelegate.m */,
 				DE0DD829242C44A6009DD877 /* SceneDelegate.h */,
@@ -111,13 +127,27 @@
 			path = TruLanguageTests;
 			sourceTree = "<group>";
 		};
-		DE0DD85E242C4763009DD877 /* TruExpr */ = {
+		DE0DD85E242C4763009DD877 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				DE0DD85B242C46EE009DD877 /* TruExpr.h */,
+				DEDBF66524316BFE00D6C2BC /* TruId.h */,
+				DEDBF650243124B800D6C2BC /* TruValue.h */,
+				DE0DD867242FCAC6009DD877 /* TruNot.h */,
+				DE0DD864242F0340009DD877 /* TruAnd.h */,
+				DE0DD865242F0398009DD877 /* TruOr.h */,
+				DE0DD866242F041B009DD877 /* TruNand.h */,
+				DE7FBA5B243045B20009E095 /* TruNor.h */,
+				DE7FBA5C243045D50009E095 /* TruXor.h */,
+				DE7FBA5D243045FA0009E095 /* TruXnor.h */,
+				DE7FBA5E243046280009E095 /* TruImply.h */,
+				DE7FBA602430466F0009E095 /* TruEqual.h */,
+				DE7FBA612430467D0009E095 /* TruMaj.h */,
+				DE7FBA62243048B60009E095 /* TruCall.h */,
 				DE0DD863242C67FE009DD877 /* TruDefinition.h */,
+				DE758B11243185DB00FDE488 /* TruFunction.h */,
 			);
-			path = TruExpr;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE758B1024316ED200FDE488 /* ViewController.h in Sources */,
+				DEDBF66424316BAB00D6C2BC /* ViewController.m in Sources */,
 				DE0DD843242C44A9009DD877 /* TruLanguageTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

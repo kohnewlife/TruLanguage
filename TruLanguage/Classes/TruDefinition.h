@@ -9,15 +9,11 @@
 #ifndef TruDefinition_h
 #define TruDefinition_h
 
-
-@interface TruDefinition
+@interface TruDefinition : NSObject
 @end
 
-@interface TruFunction
-@property NSString* name;
-@property NSArray* parameters;
-@property TruExpr* body;
-@end
+@implementation TruDefinition
 
+@end
 
 #endif /* TruDefinition_h */
