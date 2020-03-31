@@ -2,12 +2,13 @@
 //  TruMaj.h
 //  TruLanguage
 //
-//  Created by Huy Vo on 3/28/20.
+//  Created by Huy Vo on 3/30/20.
 //  Copyright © 2020 Huy Vo. All rights reserved.
 //
-
+#import "TruExpr.h"
 #ifndef TruMaj_h
 #define TruMaj_h
+
 
 @interface TruMaj : TruExpr
 @property TruExpr* first;
@@ -16,17 +17,5 @@
 - (id) initWithFirst:(TruExpr*) first second:(TruExpr*) second andThird:(TruExpr*) third;
 @end
 
-@implementation TruMaj
-- (id) initWithFirst:(TruExpr*) first second:(TruExpr*) second andThird:(TruExpr*) third;
-{
-    self = [super init];
-    if (self) {
-        self.first = first;
-        self.second = second;
-        self.third = third;
-    }
-    return self;
-}
-@end
 
 #endif /* TruMaj_h */

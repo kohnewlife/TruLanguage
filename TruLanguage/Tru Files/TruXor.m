@@ -1,19 +1,13 @@
 //
-//  TruXor.h
+//  TruXor.m
 //  TruLanguage
 //
-//  Created by Huy Vo on 3/28/20.
+//  Created by Huy Vo on 3/30/20.
 //  Copyright © 2020 Huy Vo. All rights reserved.
 //
 
-#ifndef TruXor_h
-#define TruXor_h
-
-@interface TruXor : TruExpr
-@property TruExpr* lhs;
-@property TruExpr* rhs;
-- (id) initWithLhs:(TruExpr*) lhs andRhs:(TruExpr*) rhs;
-@end
+#import <Foundation/Foundation.h>
+#import "TruXor.h"
 
 @implementation TruXor
 - (id)initWithLhs:(TruExpr*)lhs andRhs:(TruExpr*)rhs
@@ -26,5 +20,3 @@
     return self;
 }
 @end
-
-#endif /* TruXor_h */

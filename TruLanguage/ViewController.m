@@ -8,22 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ViewController.h"
-#import "TruExpr.h"
-#import "TruId.h"
-#import "TruValue.h"
-#import "TruNot.h"
-#import "TruAnd.h"
-#import "TruOr.h"
-#import "TruNand.h"
-#import "TruNor.h"
-#import "TruXor.h"
-#import "TruXnor.h"
-#import "TruImply.h"
-#import "TruEqual.h"
-#import "TruMaj.h"
-#import "TruCall.h"
-#import "TruDefinition.h"
-#import "TruFunction.h"
+
 
 // MARK: - View Controller
 @interface ViewController ()
@@ -43,7 +28,7 @@
 
 - (TruExpr*) truSubstitute:(TruExpr*) expr in:(NSString*) symbol for:(TruExpr*) newExpr
 {
-    if ([newExpr isKindOfClass:[TruValue class]]) {
+    if ([newExpr isMemberOfClass:[TruValue class]]) {
         return newExpr;
     } else if ([newExpr isKindOfClass:[TruNot class]]){
         return [[TruNot alloc]
