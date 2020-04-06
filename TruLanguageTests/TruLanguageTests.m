@@ -205,12 +205,53 @@
                           initWithFirst:[[TruEqual alloc] initWithLhs:implyFF andRhs:xnorTF]
                           second:[[TruXor alloc] initWithLhs:norTT andRhs:nandNand]
                           andThird:[[TruOr alloc] initWithLhs:andFF andRhs:notFalse]];
-    
-    // WHEN
-    <#code#>
-    
+
     // THEN
-    <#code#>
+    XCTAssertEqual([_sut truInterpret:x withDefinitions:nil], NO); // TODO handling an error somehow, maybe having a second param as an error
+    XCTAssertEqual([_sut truInterpret:falseVal withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:trueVal withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:notTrue withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:notFalse withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:andFF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:andTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:andTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:andAnd withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:orFF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:orTF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:orTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:orOr withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:nandFF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:nandTF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:nandTT withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:nandNand withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:norFF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:norTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:norTT withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:norNor withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:xorFF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:xorTF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:xorTT withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:xorXOr withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:xnorFF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:xnorTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:xnorTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:xnorXnor withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:implyFF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:implyTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:implyTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:impImply withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:eqFF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:eqTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:eqTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:eqEq withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:majFFF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:majFFT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:majTTT withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:majMaj withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:myFalse withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:myNot withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:myXor withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:myMaj withDefinitions:nil], YES);
 }
 
 @end
