@@ -88,7 +88,7 @@
 
 - (BOOL)truInterpret:(TruExpr*)expression withDefinitions:(NSArray*)defs {
     if ([expression isKindOfClass:[TruValue class]]) {
-        return YES;
+        return [(TruValue*) expression value];
     } else if ([expression isKindOfClass:[TruNot class]]){
         return ![self truInterpret:[(TruNot*) expression expression]
                     withDefinitions:defs];
@@ -179,7 +179,7 @@
             printf("wrong number of arguments");
             return nil;
         }
-        for (int i = 0; [arguments count]; i++) {
+        for (int i = 0; i < [arguments count]; i++) {
             TruExpr *arg = [arguments objectAtIndex:i];
             NSString *param = [parameters objectAtIndex:i];
             TruExpr *argExpr = [[TruValue alloc]
@@ -188,7 +188,7 @@
         }
         return [self truInterpret:body withDefinitions:defs];
     } else {
-        return NO;
+        return nil;
     }
 }
 

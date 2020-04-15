@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "AppDelegate.h"
+#import "SceneDelegate.h"
 #import "ViewController.h"
 #import "TruValue.h"
 
@@ -159,6 +161,8 @@
     TruValue *falseVal = [[TruValue alloc] init:false];
     TruValue *trueVal =  [[TruValue alloc] init:true];
     TruId    *x =        [[TruId    alloc] init:@"x"];
+    TruId    *y =        [[TruId    alloc] init:@"y"];
+    TruId    *z =        [[TruId    alloc] init:@"z"];
     TruNot   *notTrue =  [[TruNot   alloc] init:trueVal];
     TruNot   *notFalse = [[TruNot   alloc] init:falseVal];
     TruAnd   *andFF =    [[TruAnd   alloc] initWithLhs:falseVal andRhs:falseVal];
@@ -205,9 +209,23 @@
                           initWithFirst:[[TruEqual alloc] initWithLhs:implyFF andRhs:xnorTF]
                           second:[[TruXor alloc] initWithLhs:norTT andRhs:nandNand]
                           andThird:[[TruOr alloc] initWithLhs:andFF andRhs:notFalse]];
-
+    TruFunction *myFalseDef = [[TruFunction alloc] initWithName:@"my-false" parameters:nil andBody:falseVal];
+    TruFunction *myNotDef = [[TruFunction alloc] initWithName:@"my-not" parameters:@[falseVal] andBody:notFalse];
+    TruAnd *myXorBody = [[TruAnd alloc]
+                         initWithLhs:[[TruOr alloc] initWithLhs:x andRhs:y]
+                         andRhs:[[TruNand alloc] initWithLhs:x andRhs:y]];
+    TruFunction *myXorDef = [[TruFunction alloc] initWithName:@"my-xor" parameters:@[x, y] andBody:myXorBody];
+    TruOr *myMajBody = [[TruOr alloc]
+                        initWithLhs:[[TruOr alloc]
+                                     initWithLhs:[[TruAnd alloc] initWithLhs:x andRhs:y]
+                                     andRhs:[[TruAnd alloc] initWithLhs:x andRhs:z]]
+                        andRhs:[[TruAnd alloc] initWithLhs:y andRhs:z]];
+    TruFunction *myMajDef = [[TruFunction alloc] initWithName:@"my-majority" parameters:@[x, y, z] andBody:myMajBody];
+    TruFunction *myWrongMajDef = [[TruFunction alloc] initWithName:@"my-majority" parameters:@[x, y] andBody:myMajBody];
+    
     // THEN
-    XCTAssertEqual([_sut truInterpret:x withDefinitions:nil], NO); // TODO handling an error somehow, maybe having a second param as an error
+    XCTAssertEqual([_sut truInterpret:x withDefinitions:nil], nil); // TODO handling an error somehow, maybe having a second param as an error
+    XCTAssertEqual([_sut truInterpret:nil withDefinitions:nil], nil);
     XCTAssertEqual([_sut truInterpret:falseVal withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:trueVal withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:notTrue withDefinitions:nil], NO);
@@ -217,41 +235,64 @@
     XCTAssertEqual([_sut truInterpret:andTT withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:andAnd withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:orFF withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:orTF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:orTF withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:orTT withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:orOr withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:orOr withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:nandFF withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:nandTF withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:nandTT withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:nandNand withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:norFF withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:norTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:norTF withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:norTT withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:norNor withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:xorFF withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:xorTF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:xorTF withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:xorTT withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:xorXOr withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:xnorFF withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:xnorTF withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:xnorTF withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:xnorTT withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:xnorXnor withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:implyFF withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:xnorXnor withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:implyFF withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:implyTF withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:implyTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:implyTT withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:impImply withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:eqFF withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:eqTF withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:eqTT withDefinitions:nil], YES);
     XCTAssertEqual([_sut truInterpret:eqEq withDefinitions:nil], NO);
     XCTAssertEqual([_sut truInterpret:majFFF withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:majFFT withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:majTTT withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:majMaj withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:myFalse withDefinitions:nil], NO);
-    XCTAssertEqual([_sut truInterpret:myNot withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:myXor withDefinitions:nil], YES);
-    XCTAssertEqual([_sut truInterpret:myMaj withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:majFFT withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:majTTT withDefinitions:nil], YES);
+    XCTAssertEqual([_sut truInterpret:majMaj withDefinitions:nil], NO);
+    XCTAssertEqual([_sut truInterpret:myFalse withDefinitions:@[myFalseDef]], NO);
+    XCTAssertEqual([_sut truInterpret:myNot withDefinitions:@[myNotDef]], YES);
+    XCTAssertEqual([_sut truInterpret:myXor withDefinitions:@[myXorDef]], NO);
+    XCTAssertEqual([_sut truInterpret:myMaj withDefinitions:@[myMajDef]], NO);
+    XCTAssertEqual([_sut truInterpret:myMaj withDefinitions:@[myWrongMajDef]], nil);
+}
+
+- (void) testAppDelegate {
+    // GIVEN
+    AppDelegate* appDelegate = [[AppDelegate alloc] init];
+    UISceneConfiguration *sc = ([appDelegate application:[UIApplication sharedApplication] configurationForConnectingSceneSession:nil options:nil]);
+    
+    // WHEN
+    ([appDelegate application:[UIApplication sharedApplication] didDiscardSceneSessions:nil]);
+    
+    // THEN
+    XCTAssertTrue([appDelegate application:[UIApplication sharedApplication] didFinishLaunchingWithOptions:nil]);
+}
+
+- (void) testSceneDelegate {
+    // GIVEN
+    SceneDelegate *sceneDelegate = [[SceneDelegate alloc] init];
+    
+    // WHEN
+    ([sceneDelegate sceneDidDisconnect:nil]);
+    ([sceneDelegate sceneWillResignActive:nil]);
+    ([sceneDelegate sceneDidEnterBackground:nil]);
 }
 
 @end
